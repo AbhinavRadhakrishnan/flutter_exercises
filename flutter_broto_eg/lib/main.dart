@@ -28,6 +28,52 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.blueGrey,
       ),
+      body: SafeArea(
+        child: Container(
+          width: double.infinity,
+          height: double.infinity,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Macfast',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    color: Colors.amber,
+                    fontSize: 100,
+                    fontWeight: FontWeight.w500),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  TextButton(
+                    onPressed: () {
+                      print('text button clicked');
+                    },
+                    child: Text(
+                      'Press',
+                      style: TextStyle(color: Colors.deepOrange),
+                    ),
+                  ),
+                  IconButton(
+                      onPressed: () {
+                        print('icon button clicked');
+                      },
+                      icon: Icon(Icons.import_contacts))
+                ],
+              ),
+              ElevatedButton(
+                  onPressed: () {
+                    print('elivated button clicked');
+                  },
+                  child: Text(
+                    'press me',
+                    style: TextStyle(color: Colors.deepOrange),
+                  ))
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
