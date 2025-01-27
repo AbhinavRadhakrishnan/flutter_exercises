@@ -21,6 +21,16 @@ class MyApp extends StatelessWidget {
               style: TextStyle(color: Colors.deepOrangeAccent),
             ),
             backgroundColor: Colors.black26,
+            actions: <Widget>[
+              IconButton(
+                icon: Icon(Icons.home,
+                    color: const Color.fromARGB(
+                        255, 241, 33, 33)), // Replace with your icon
+                onPressed: () {
+                  // Handle icon press
+                },
+              ),
+            ],
           ),
           body: const Center(
             child: Column(
