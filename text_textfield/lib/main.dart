@@ -16,10 +16,16 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class ScreenHome extends StatelessWidget {
+class ScreenHome extends StatefulWidget {
   ScreenHome({super.key});
 
+  @override
+  State<ScreenHome> createState() => _ScreenHomeState();
+}
+
+class _ScreenHomeState extends State<ScreenHome> {
   final _textcontroller = TextEditingController();
+  String _displaytext = "text to show";
 
   @override
   Widget build(BuildContext context) {
@@ -42,10 +48,13 @@ class ScreenHome extends StatelessWidget {
                   onPressed: () {
                     //get data
                     print(_textcontroller.text);
+                    setState(() {
+                      _displaytext = _textcontroller.text;
+                    });
                   },
                   child: Text('Click'),
                 ),
-                Text('data will be shown'),
+                Text(_displaytext),
               ],
             ),
           ),
