@@ -5,6 +5,8 @@ import 'package:hive_eg/db/model/data_model.dart';
 class ListStudent extends StatelessWidget {
   const ListStudent({super.key});
 
+  
+
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
@@ -17,18 +19,32 @@ class ListStudent extends StatelessWidget {
             return ListTile(
                 title: Text(data.name),
                 subtitle: Text(data.age),
-                trailing: IconButton(
-                    onPressed: () {
-                      if (data.id != null) {
-                        deleteStudent(data.id!);
-                      } else {
-                        print('Student id is null ');
-                      }
-                    },
-                    icon: const Icon(
-                      Icons.delete,
-                      color: Colors.red,
-                    )));
+                trailing: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                     IconButton(
+                          onPressed: (){},
+                         icon: Icon(Icons.edit,
+                         color: Colors.lightBlue,)),
+                           SizedBox(width: 10,),
+
+                    IconButton(
+                        onPressed: () {
+                          if (data.id != null) {
+                            deleteStudent(data.id!);
+                          } else {
+                            print('Student id is null ');
+                          }
+                        },
+                        icon: const Icon(
+                          Icons.delete,
+                          color: Colors.red,
+                        )),
+                      
+                       
+
+                  ],
+                ));
           },
           separatorBuilder: (ctx, index) => const Divider(),
           itemCount: studentList.length,
