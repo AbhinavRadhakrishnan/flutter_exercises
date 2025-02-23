@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:money_manager/db/category/category_db.dart';
 import 'package:money_manager/screens/category/expense_category_list';
 import 'package:money_manager/screens/category/income_category_list.dart';
 
@@ -17,6 +18,8 @@ class _ScreenCategoryState extends State<ScreenCategory>
   void initState() {
     // TODO: implement initState
     _tabController = TabController(length: 2, vsync: this);
+    CategoryDB().refershUI();
+
     super.initState();
   }
 
@@ -24,24 +27,21 @@ class _ScreenCategoryState extends State<ScreenCategory>
   Widget build(BuildContext context) {
     return Column(
       children: [
-        TabBar(controller: _tabController, 
-        labelColor:Colors.black,
-        tabs:const [
-          Tab(
-            text: "INCOME",
-          ),
-          Tab(
-            text: "EXPENSE",
-          )
-        ]),
+        TabBar(
+            controller: _tabController,
+            labelColor: Colors.black,
+            tabs: const [
+              Tab(
+                text: "INCOME",
+              ),
+              Tab(
+                text: "EXPENSE",
+              )
+            ]),
         Expanded(
           child: TabBarView(
-            controller: _tabController,
-            children:const [
-              IncomeCategoryList(),
-              ExpenseCategoryList()
-          
-            ]),
+              controller: _tabController,
+              children: const [IncomeCategoryList(), ExpenseCategoryList()]),
         )
       ],
     );

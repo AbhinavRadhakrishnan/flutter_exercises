@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:money_manager/db/category/category_db.dart';
+import 'package:money_manager/models/category/category_model.dart';
+import 'package:money_manager/screens/add_transaction/screen_add_transactions.dart';
+import 'package:money_manager/screens/category/category_add_popup.dart';
 import 'package:money_manager/screens/category/screen_category.dart';
 import 'package:money_manager/screens/home/widgets/bottom_navigation.dart';
 import 'package:money_manager/screens/transactions/screen_transaction.dart';
@@ -14,7 +18,8 @@ class ScreenHome extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.deepPurple[100],
       appBar: AppBar(
-        title: Text("MONEY MANAGER",style: TextStyle(fontWeight: FontWeight.bold)),
+        title: Text("MONEY MANAGER",
+            style: TextStyle(fontWeight: FontWeight.bold)),
         centerTitle: true,
         backgroundColor: Colors.deepPurpleAccent[100],
       ),
@@ -30,8 +35,15 @@ class ScreenHome extends StatelessWidget {
         onPressed: () {
           if (selectedIndexNotifier.value == 0) {
             print("add Transactions");
+            Navigator.of(context).pushNamed(ScreenAddTransaction.routeName);
           } else {
             print("add catogery");
+            showCategoryAddPopup(context);
+            // final _sample = CategoryModel(
+            //     id: DateTime.now().millisecondsSinceEpoch.toString(),
+            //     name: 'travel',
+            //     type: CategoryType.expense);
+            // CategoryDB().insertCatogory(_sample);
           }
         },
         child: Icon(Icons.add),
